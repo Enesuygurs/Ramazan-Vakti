@@ -198,7 +198,7 @@
             lblRamadanDay.Name = "lblRamadanDay";
             lblRamadanDay.Size = new Size(120, 32);
             lblRamadanDay.TabIndex = 10;
-            lblRamadanDay.Text = "24. Gün";
+            lblRamadanDay.Text = "1. Gün";
             lblRamadanDay.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblCity

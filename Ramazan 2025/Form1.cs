@@ -42,6 +42,7 @@ namespace Ramazan_2025 {
             InitializeComponent();
             SetWindowPos(this.Handle, (IntPtr)HWND_BOTTOM, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE | SWP_NOACTIVATE | SWP_SHOWWINDOW); // Widget olarak ayarla
             SetFormPosition(); // Formun konumunu ayarlayan metod
+            lblKalanZaman.Visible = false;
         }
 
         private async void Form1_Load(object sender, EventArgs e) => await GetPrayerTimes();
@@ -84,6 +85,7 @@ namespace Ramazan_2025 {
                 lblTime5.Text = $"Yatsı: {_isha}";
                 lblRamadanDay.Text = $"{result.HijriDay}. Gün";
 
+                lblKalanZaman.Visible = true;
                 if (!timerRemainingTime.Enabled) timerRemainingTime.Enabled = true;
             } catch {
                 // Network or API error – retry silently every 3 seconds
