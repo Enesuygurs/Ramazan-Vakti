@@ -1,6 +1,6 @@
 ﻿using Microsoft.Win32;
 
-namespace Ramazan_2025
+namespace Ramazan_Vakti
 {
     public partial class FormSettings : Form {
         public event EventHandler? CityChanged;
@@ -21,7 +21,7 @@ namespace Ramazan_2025
             Properties.Settings.Default.Save();
         }
         private void cbRunStartup_CheckedChanged(object sender, EventArgs e) {
-            string appName = "Ramazan 2025";
+            string appName = "Ramazan Vakti";
             string exePath = Application.ExecutablePath;
             string registryPath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
 

@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using static System.Net.WebRequestMethods;
 
-namespace Ramazan_2025 {
+namespace Ramazan_Vakti {
     public partial class Form1 : Form {
 
         #region Fields

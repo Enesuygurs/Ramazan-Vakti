@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Ramazan_2025.Properties {
+namespace Ramazan_Vakti.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

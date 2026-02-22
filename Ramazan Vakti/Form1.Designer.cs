@@ -1,4 +1,4 @@
-﻿namespace Ramazan_2025
+﻿namespace Ramazan_Vakti
 {
     partial class Form1
     {
@@ -114,7 +114,7 @@
             Title.Name = "Title";
             Title.Size = new Size(85, 15);
             Title.TabIndex = 5;
-            Title.Text = "İmsakiye 2025";
+            Title.Text = "Ramazan Vakti";
             Title.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btnClose
@@ -161,7 +161,7 @@
             // 
             reminderNotification.ContextMenuStrip = taskbarMenu;
             reminderNotification.Icon = (Icon)resources.GetObject("reminderNotification.Icon");
-            reminderNotification.Text = "Ramazan 2025";
+            reminderNotification.Text = "Ramazan Vakti";
             reminderNotification.Visible = true;
             // 
             // taskbarMenu
@@ -247,7 +247,7 @@
             Name = "Form1";
             Opacity = 0.8D;
             ShowInTaskbar = false;
-            Text = "Ramazan 2025";
+            Text = "Ramazan Vakti";
             Load += Form1_Load;
             MouseDown += Form1_MouseDown;
             MouseMove += Form1_MouseMove;

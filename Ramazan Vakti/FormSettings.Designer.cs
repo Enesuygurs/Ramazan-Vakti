@@ -1,4 +1,4 @@
-﻿namespace Ramazan_2025 {
+﻿namespace Ramazan_Vakti {
     partial class FormSettings {
         /// <summary>
         /// Required designer variable.

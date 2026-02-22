@@ -1,4 +1,4 @@
-namespace Ramazan_2025
+namespace Ramazan_Vakti
 {
     internal static class Program
     {

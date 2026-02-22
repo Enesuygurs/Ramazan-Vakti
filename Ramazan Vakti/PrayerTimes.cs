@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace Ramazan_2025 {
+namespace Ramazan_Vakti {
     public class PrayerTimes {
         private static readonly HttpClient _httpClient = new() {
             DefaultRequestHeaders = { ConnectionClose = true }

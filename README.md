@@ -1,6 +1,6 @@
-# 🕌 Ramazan 2025
+# 🕌 Ramazan Vakti
 
-**Ramazan 2025** is a lightweight and user-friendly desktop application that helps you track prayer and iftar times. The application provides real-time prayer times based on the selected city and sends notifications before sahur and iftar.
+**Ramazan Vakti** is a lightweight and user-friendly desktop application that helps you track prayer and iftar times. The application provides real-time prayer times based on the selected city and sends notifications before sahur and iftar.
 
 ## 📌 Features
 
@@ -18,7 +18,7 @@
 
 1. **Download** zip file.
 2. Extract the ZIP file.  
-3. Run `Ramazan 2025.exe`.  
+3. Run `Ramazan Vakti.exe`.  
 
 ## ⚙️ How to Use
 
