@@ -13,6 +13,8 @@ namespace Ramazan_2025 {
         private string? _fajr, _dhuhr, _asr, _maghrib, _isha, _tomorrowFajr;
         private const int OriginalWidth = 220;
         private const int OriginalHeight = 310;
+        private System.Windows.Forms.Timer? _retryTimer;
+        private bool _retryScheduled = false;
         #endregion
 
         #region Components
@@ -44,6 +46,22 @@ namespace Ramazan_2025 {
 
         private async void Form1_Load(object sender, EventArgs e) => await GetPrayerTimes();
 
+        private void ScheduleRetry() {
+            if (_retryScheduled) return;
+            _retryScheduled = true;
+            _retryTimer?.Stop();
+            _retryTimer?.Dispose();
+            _retryTimer = new System.Windows.Forms.Timer { Interval = 3000 };
+            _retryTimer.Tick += async (s, e) => {
+                _retryTimer!.Stop();
+                _retryTimer.Dispose();
+                _retryTimer = null;
+                _retryScheduled = false;
+                await GetPrayerTimes();
+            };
+            _retryTimer.Start();
+        }
+
         #region Ramadan Timetable Operations 
         public async Task GetPrayerTimes() {
             try {
@@ -67,8 +85,9 @@ namespace Ramazan_2025 {
                 lblRamadanDay.Text = $"{result.HijriDay}. Gün";
 
                 if (!timerRemainingTime.Enabled) timerRemainingTime.Enabled = true;
-            } catch (Exception ex) {
-                MessageBox.Show($"An error occurred while fetching prayer times: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } catch {
+                // Network or API error – retry silently every 3 seconds
+                ScheduleRetry();
             }
         }
 
@@ -119,8 +138,8 @@ namespace Ramazan_2025 {
                         _activeLabel = activeLabelNew;
                     }
                 }
-            } catch (Exception ex) {
-                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } catch {
+                // Silently ignore tick errors; GetPrayerTimes will schedule a retry if needed
             }
         }
 
@@ -157,11 +176,7 @@ namespace Ramazan_2025 {
 
 
         private async void OnCityChanged(object? sender, EventArgs e) {
-            try {
-                await GetPrayerTimes();
-            } catch (Exception ex) {
-                MessageBox.Show($"Error fetching prayer times: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            await GetPrayerTimes();
         }
 
         private void PositionSettingsForm() {
