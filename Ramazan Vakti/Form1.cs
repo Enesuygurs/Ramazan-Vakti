@@ -49,7 +49,7 @@ namespace Ramazan_Vakti {
         {
             // Apply saved transparency percentage (0-100)
             int pct = Properties.Settings.Default.TransparencyPercent;
-            this.Opacity = Math.Clamp(pct / 100.0, 0.2, 1.0);
+            this.Opacity = Math.Clamp(pct / 100.0, 0.5, 1.0);
             await GetPrayerTimes();
         }
 

@@ -12,8 +12,16 @@ namespace Ramazan_Vakti
         }
         private void FormSettings_Load(object sender, EventArgs e) {
             cbEnableReminder.Checked = Properties.Settings.Default.reminder;
-            tbTransparency.Value = Properties.Settings.Default.TransparencyPercent;
+            int pct = Properties.Settings.Default.TransparencyPercent;
+            pct = Math.Clamp(pct, 50, 100);
+            // ensure trackbar range respected
+            tbTransparency.Value = pct;
             lblTransparencyValue.Text = $"{tbTransparency.Value}%";
+            // persist corrected value if it was out of range
+            if (pct != Properties.Settings.Default.TransparencyPercent) {
+                Properties.Settings.Default.TransparencyPercent = pct;
+                Properties.Settings.Default.Save();
+            }
             cbChangeCity.SelectedItem = Properties.Settings.Default.SelectedCity ?? "İstanbul";
             _isInitializing = true; // 🔥 Event'leri tekrar aktif et
         }
