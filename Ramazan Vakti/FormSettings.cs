@@ -12,7 +12,8 @@ namespace Ramazan_Vakti
         }
         private void FormSettings_Load(object sender, EventArgs e) {
             cbEnableReminder.Checked = Properties.Settings.Default.reminder;
-            cbEnableTransparency.Checked = Properties.Settings.Default.UseTransparency;
+            tbTransparency.Value = Properties.Settings.Default.TransparencyPercent;
+            lblTransparencyValue.Text = $"{tbTransparency.Value}%";
             cbChangeCity.SelectedItem = Properties.Settings.Default.SelectedCity ?? "İstanbul";
             _isInitializing = true; // 🔥 Event'leri tekrar aktif et
         }
@@ -22,14 +23,15 @@ namespace Ramazan_Vakti
             Properties.Settings.Default.reminder = cbEnableReminder.Checked;
             Properties.Settings.Default.Save();
         }
-        private void cbEnableTransparency_CheckedChanged(object sender, EventArgs e) {
-            Properties.Settings.Default.UseTransparency = cbEnableTransparency.Checked;
+        private void tbTransparency_ValueChanged(object sender, EventArgs e) {
+            Properties.Settings.Default.TransparencyPercent = tbTransparency.Value;
             Properties.Settings.Default.Save();
+            lblTransparencyValue.Text = $"{tbTransparency.Value}%";
 
             // Apply immediately to main form if it's open
             try {
                 var main = Application.OpenForms.OfType<Form>().FirstOrDefault(f => f.Name == "Form1");
-                if (main != null) main.Opacity = cbEnableTransparency.Checked ? 0.8D : 1.0D;
+                if (main != null) main.Opacity = tbTransparency.Value / 100.0;
             } catch { }
         }
         private void cbRunStartup_CheckedChanged(object sender, EventArgs e) {

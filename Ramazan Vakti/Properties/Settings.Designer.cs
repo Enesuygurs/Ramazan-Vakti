@@ -49,13 +49,13 @@ namespace Ramazan_Vakti.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool UseTransparency {
+        [global::System.Configuration.DefaultSettingValueAttribute("80")]
+        public int TransparencyPercent {
             get {
-                return ((bool)(this["UseTransparency"]));
+                return ((int)(this["TransparencyPercent"]));
             }
             set {
-                this["UseTransparency"] = value;
+                this["TransparencyPercent"] = value;
             }
         }
     }

@@ -25,7 +25,9 @@
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSettings));
             cbEnableReminder = new CheckBox();
-            cbEnableTransparency = new CheckBox();
+            lblTransparency = new Label();
+            tbTransparency = new TrackBar();
+            lblTransparencyValue = new Label();
             btnClose = new Label();
             Title = new Label();
             cbChangeCity = new ComboBox();
@@ -45,18 +47,40 @@
             cbEnableReminder.UseVisualStyleBackColor = true;
             cbEnableReminder.CheckedChanged += cbEnableReminder_CheckedChanged;
             // 
-            // cbEnableTransparency
             // 
-            cbEnableTransparency.AutoSize = true;
-            cbEnableTransparency.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            cbEnableTransparency.ForeColor = Color.WhiteSmoke;
-            cbEnableTransparency.Location = new Point(24, 95);
-            cbEnableTransparency.Name = "cbEnableTransparency";
-            cbEnableTransparency.Size = new Size(100, 17);
-            cbEnableTransparency.TabIndex = 2;
-            cbEnableTransparency.Text = "Şeffaflık Aç";
-            cbEnableTransparency.UseVisualStyleBackColor = true;
-            cbEnableTransparency.CheckedChanged += cbEnableTransparency_CheckedChanged;
+            // lblTransparency
+            // 
+            lblTransparency.AutoSize = true;
+            lblTransparency.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            lblTransparency.ForeColor = Color.WhiteSmoke;
+            lblTransparency.Location = new Point(24, 95);
+            lblTransparency.Name = "lblTransparency";
+            lblTransparency.Size = new Size(78, 13);
+            lblTransparency.TabIndex = 2;
+            lblTransparency.Text = "Şeffaflık (%)";
+            // 
+            // tbTransparency
+            // 
+            tbTransparency.Location = new Point(24, 110);
+            tbTransparency.Maximum = 100;
+            tbTransparency.Minimum = 0;
+            tbTransparency.TickFrequency = 10;
+            tbTransparency.Name = "tbTransparency";
+            tbTransparency.Size = new Size(150, 45);
+            tbTransparency.TabIndex = 3;
+            tbTransparency.Value = 80;
+            tbTransparency.ValueChanged += tbTransparency_ValueChanged;
+            // 
+            // lblTransparencyValue
+            // 
+            lblTransparencyValue.AutoSize = true;
+            lblTransparencyValue.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            lblTransparencyValue.ForeColor = Color.WhiteSmoke;
+            lblTransparencyValue.Location = new Point(180, 110);
+            lblTransparencyValue.Name = "lblTransparencyValue";
+            lblTransparencyValue.Size = new Size(28, 13);
+            lblTransparencyValue.TabIndex = 4;
+            lblTransparencyValue.Text = "80%";
             // 
             // btnClose
             // 
@@ -116,7 +140,9 @@
             ClientSize = new Size(220, 180);
             Controls.Add(cbRunOnStartup);
             Controls.Add(cbChangeCity);
-            Controls.Add(cbEnableTransparency);
+            Controls.Add(lblTransparencyValue);
+            Controls.Add(tbTransparency);
+            Controls.Add(lblTransparency);
             Controls.Add(btnClose);
             Controls.Add(Title);
             Controls.Add(cbEnableReminder);
@@ -137,7 +163,9 @@
         #endregion
 
         private CheckBox cbEnableReminder;
-        private CheckBox cbEnableTransparency;
+        private Label lblTransparency;
+        private TrackBar tbTransparency;
+        private Label lblTransparencyValue;
         private Label btnClose;
         private Label Title;
         private ComboBox cbChangeCity;

@@ -47,8 +47,9 @@ namespace Ramazan_Vakti {
 
         private async void Form1_Load(object sender, EventArgs e)
         {
-            // Apply saved transparency setting (default defined in designer is 0.8)
-            this.Opacity = Properties.Settings.Default.UseTransparency ? 0.8D : 1.0D;
+            // Apply saved transparency percentage (0-100)
+            int pct = Properties.Settings.Default.TransparencyPercent;
+            this.Opacity = Math.Clamp(pct / 100.0, 0.2, 1.0);
             await GetPrayerTimes();
         }
 
