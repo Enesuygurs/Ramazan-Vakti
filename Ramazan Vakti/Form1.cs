@@ -45,7 +45,12 @@ namespace Ramazan_Vakti {
             lblKalanZaman.Visible = false;
         }
 
-        private async void Form1_Load(object sender, EventArgs e) => await GetPrayerTimes();
+        private async void Form1_Load(object sender, EventArgs e)
+        {
+            // Apply saved transparency setting (default defined in designer is 0.8)
+            this.Opacity = Properties.Settings.Default.UseTransparency ? 0.8D : 1.0D;
+            await GetPrayerTimes();
+        }
 
         private void ScheduleRetry() {
             if (_retryScheduled) return;

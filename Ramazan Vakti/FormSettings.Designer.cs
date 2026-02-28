@@ -25,6 +25,7 @@
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSettings));
             cbEnableReminder = new CheckBox();
+            cbEnableTransparency = new CheckBox();
             btnClose = new Label();
             Title = new Label();
             cbChangeCity = new ComboBox();
@@ -43,6 +44,19 @@
             cbEnableReminder.Text = "Reminders";
             cbEnableReminder.UseVisualStyleBackColor = true;
             cbEnableReminder.CheckedChanged += cbEnableReminder_CheckedChanged;
+            // 
+            // cbEnableTransparency
+            // 
+            cbEnableTransparency.AutoSize = true;
+            cbEnableTransparency.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            cbEnableTransparency.ForeColor = Color.WhiteSmoke;
+            cbEnableTransparency.Location = new Point(24, 95);
+            cbEnableTransparency.Name = "cbEnableTransparency";
+            cbEnableTransparency.Size = new Size(100, 17);
+            cbEnableTransparency.TabIndex = 2;
+            cbEnableTransparency.Text = "Şeffaflık Aç";
+            cbEnableTransparency.UseVisualStyleBackColor = true;
+            cbEnableTransparency.CheckedChanged += cbEnableTransparency_CheckedChanged;
             // 
             // btnClose
             // 
@@ -102,6 +116,7 @@
             ClientSize = new Size(220, 180);
             Controls.Add(cbRunOnStartup);
             Controls.Add(cbChangeCity);
+            Controls.Add(cbEnableTransparency);
             Controls.Add(btnClose);
             Controls.Add(Title);
             Controls.Add(cbEnableReminder);
@@ -122,6 +137,7 @@
         #endregion
 
         private CheckBox cbEnableReminder;
+        private CheckBox cbEnableTransparency;
         private Label btnClose;
         private Label Title;
         private ComboBox cbChangeCity;

@@ -46,5 +46,17 @@ namespace Ramazan_Vakti.Properties {
                 this["SelectedCity"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool UseTransparency {
+            get {
+                return ((bool)(this["UseTransparency"]));
+            }
+            set {
+                this["UseTransparency"] = value;
+            }
+        }
     }
 }

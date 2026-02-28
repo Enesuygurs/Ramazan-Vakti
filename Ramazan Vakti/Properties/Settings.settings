@@ -8,5 +8,8 @@
     <Setting Name="SelectedCity" Type="System.String" Scope="User">
       <Value Profile="(Default)">İstanbul</Value>
     </Setting>
+    <Setting Name="UseTransparency" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

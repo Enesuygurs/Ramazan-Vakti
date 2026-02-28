@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using System.Linq;
 
 namespace Ramazan_Vakti
 {
@@ -11,6 +12,7 @@ namespace Ramazan_Vakti
         }
         private void FormSettings_Load(object sender, EventArgs e) {
             cbEnableReminder.Checked = Properties.Settings.Default.reminder;
+            cbEnableTransparency.Checked = Properties.Settings.Default.UseTransparency;
             cbChangeCity.SelectedItem = Properties.Settings.Default.SelectedCity ?? "İstanbul";
             _isInitializing = true; // 🔥 Event'leri tekrar aktif et
         }
@@ -19,6 +21,16 @@ namespace Ramazan_Vakti
         private void cbEnableReminder_CheckedChanged(object sender, EventArgs e) {
             Properties.Settings.Default.reminder = cbEnableReminder.Checked;
             Properties.Settings.Default.Save();
+        }
+        private void cbEnableTransparency_CheckedChanged(object sender, EventArgs e) {
+            Properties.Settings.Default.UseTransparency = cbEnableTransparency.Checked;
+            Properties.Settings.Default.Save();
+
+            // Apply immediately to main form if it's open
+            try {
+                var main = Application.OpenForms.OfType<Form>().FirstOrDefault(f => f.Name == "Form1");
+                if (main != null) main.Opacity = cbEnableTransparency.Checked ? 0.8D : 1.0D;
+            } catch { }
         }
         private void cbRunStartup_CheckedChanged(object sender, EventArgs e) {
             string appName = "Ramazan Vakti";
