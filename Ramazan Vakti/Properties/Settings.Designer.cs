@@ -58,5 +58,17 @@ namespace Ramazan_Vakti.Properties {
                 this["TransparencyPercent"] = value;
             }
         }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IsCompact {
+            get {
+                return ((bool)(this["IsCompact"]));
+            }
+            set {
+                this["IsCompact"] = value;
+            }
+        }
     }
 }

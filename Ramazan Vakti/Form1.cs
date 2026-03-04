@@ -50,6 +50,14 @@ namespace Ramazan_Vakti {
             // Apply saved transparency percentage (0-100)
             int pct = Properties.Settings.Default.TransparencyPercent;
             this.Opacity = Math.Clamp(pct / 100.0, 0.5, 1.0);
+
+            // Restore compact/expanded state
+            if (Properties.Settings.Default.IsCompact) {
+                MaximumSize = new Size(220, 140);
+                Size = new Size(220, 140);
+                lblChangeSize.Text = "⏷";
+            }
+
             await GetPrayerTimes();
         }
 
@@ -220,12 +228,15 @@ namespace Ramazan_Vakti {
                 MaximumSize = new Size(220, 140);
                 Size = new Size(220, 140);
                 lblChangeSize.Text = "⏷";
+                Properties.Settings.Default.IsCompact = true;
             } else {
                 MinimumSize = new Size(220, 310);
                 MaximumSize = new Size(225, 320);
                 Size = new Size(220, 310);
                 lblChangeSize.Text = "⏶";
+                Properties.Settings.Default.IsCompact = false;
             }
+            Properties.Settings.Default.Save();
         }
         #endregion
 
