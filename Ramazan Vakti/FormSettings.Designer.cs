@@ -126,7 +126,7 @@
             cbEdgeMargin.DropDownStyle = ComboBoxStyle.DropDownList;
             cbEdgeMargin.FlatStyle = FlatStyle.Flat;
             cbEdgeMargin.FormattingEnabled = true;
-            cbEdgeMargin.Items.AddRange(new object[] { "5", "10", "15", "20" });
+            cbEdgeMargin.Items.AddRange(new object[] { "5", "10", "15", "20", "25", "30", "35", "40" });
             cbEdgeMargin.Location = new Point(49, 170);
             cbEdgeMargin.Name = "cbEdgeMargin";
             cbEdgeMargin.Size = new Size(60, 23);
