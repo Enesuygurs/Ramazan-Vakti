@@ -70,5 +70,17 @@ namespace Ramazan_Vakti.Properties {
                 this["IsCompact"] = value;
             }
         }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int EdgeMargin {
+            get {
+                return ((int)(this["EdgeMargin"]));
+            }
+            set {
+                this["EdgeMargin"] = value;
+            }
+        }
     }
 }

@@ -33,6 +33,8 @@
             cbChangeCity = new ComboBox();
             cbRunOnStartup = new CheckBox();
             label1 = new Label();
+            lblEdgeMargin = new Label();
+            cbEdgeMargin = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)tbTransparency).BeginInit();
             SuspendLayout();
             // 
@@ -102,11 +104,34 @@
             cbChangeCity.FlatStyle = FlatStyle.Flat;
             cbChangeCity.FormattingEnabled = true;
             cbChangeCity.Items.AddRange(new object[] { "Adana", "Adıyaman", "Afyonkarahisar", "Ağrı", "Aksaray", "Amasya", "Ankara", "Antalya", "Ardahan", "Artvin", "Aydın", "Balıkesir", "Bartın", "Batman", "Bayburt", "Bilecik", "Bingöl", "Bitlis", "Bolu", "Burdur", "Bursa", "Çanakkale", "Çankırı", "Çorum", "Denizli", "Diyarbakır", "Düzce", "Edirne", "Elazığ", "Erzincan", "Erzurum", "Eskişehir", "Gaziantep", "Giresun", "Gümüşhane", "Hakkâri", "Hatay", "Iğdır", "Isparta", "İstanbul", "İzmir", "Kahramanmaraş", "Karabük", "Karaman", "Kars", "Kastamonu", "Kayseri", "Kilis", "Kırıkkale", "Kırklareli", "Kırşehir", "Kocaeli", "Konya", "Kütahya", "Malatya", "Manisa", "Mardin", "Mersin", "Muğla", "Muş", "Nevşehir", "Niğde", "Ordu", "Osmaniye", "Rize", "Sakarya", "Samsun", "Şanlıurfa", "Siirt", "Sinop", "Sivas", "Şırnak", "Tekirdağ", "Tokat", "Trabzon", "Tunceli", "Uşak", "Van", "Yalova", "Yozgat", "Zonguldak" });
-            cbChangeCity.Location = new Point(49, 180);
+            cbChangeCity.Location = new Point(49, 210);
             cbChangeCity.Name = "cbChangeCity";
             cbChangeCity.Size = new Size(121, 23);
             cbChangeCity.TabIndex = 9;
             cbChangeCity.SelectedIndexChanged += cbChangeCity_SelectedIndexChanged;
+            // 
+            // lblEdgeMargin
+            // 
+            lblEdgeMargin.AutoSize = true;
+            lblEdgeMargin.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            lblEdgeMargin.ForeColor = Color.WhiteSmoke;
+            lblEdgeMargin.Location = new Point(24, 155);
+            lblEdgeMargin.Name = "lblEdgeMargin";
+            lblEdgeMargin.TabIndex = 12;
+            lblEdgeMargin.Text = "Köşe Boşluğu (px)";
+            // 
+            // cbEdgeMargin
+            // 
+            cbEdgeMargin.BackColor = Color.White;
+            cbEdgeMargin.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbEdgeMargin.FlatStyle = FlatStyle.Flat;
+            cbEdgeMargin.FormattingEnabled = true;
+            cbEdgeMargin.Items.AddRange(new object[] { "5", "10", "15", "20" });
+            cbEdgeMargin.Location = new Point(49, 170);
+            cbEdgeMargin.Name = "cbEdgeMargin";
+            cbEdgeMargin.Size = new Size(60, 23);
+            cbEdgeMargin.TabIndex = 13;
+            cbEdgeMargin.SelectedIndexChanged += cbEdgeMargin_SelectedIndexChanged;
             // 
             // cbRunOnStartup
             // 
@@ -138,9 +163,11 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
-            ClientSize = new Size(219, 220);
+            ClientSize = new Size(219, 250);
             Controls.Add(label1);
             Controls.Add(cbRunOnStartup);
+            Controls.Add(cbEdgeMargin);
+            Controls.Add(lblEdgeMargin);
             Controls.Add(cbChangeCity);
             Controls.Add(lblTransparencyValue);
             Controls.Add(tbTransparency);
@@ -171,5 +198,7 @@
         private ComboBox cbChangeCity;
         private CheckBox cbRunOnStartup;
         private Label label1;
+        private Label lblEdgeMargin;
+        private ComboBox cbEdgeMargin;
     }
 }

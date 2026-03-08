@@ -241,9 +241,10 @@ namespace Ramazan_Vakti {
         #endregion
 
         #region Startup Position & Resizable Form
-        private void SetFormPosition() {
-            int pointX = (Screen.PrimaryScreen != null) ? Screen.PrimaryScreen.Bounds.Width - this.Width - 50 : 100;
-            int pointY = 50; // Üst kenardan 50 piksel aşağı
+        public void SetFormPosition() {
+            int margin = Properties.Settings.Default.EdgeMargin;
+            int pointX = (Screen.PrimaryScreen != null) ? Screen.PrimaryScreen.Bounds.Width - this.Width - margin : 100;
+            int pointY = margin;
             this.StartPosition = FormStartPosition.Manual;
             this.Location = new Point(pointX, pointY);
         }
