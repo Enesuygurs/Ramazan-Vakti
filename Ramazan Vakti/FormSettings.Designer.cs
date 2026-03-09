@@ -35,6 +35,7 @@
             label1 = new Label();
             lblEdgeMargin = new Label();
             cbEdgeMargin = new ComboBox();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)tbTransparency).BeginInit();
             SuspendLayout();
             // 
@@ -45,9 +46,9 @@
             cbEnableReminder.ForeColor = Color.WhiteSmoke;
             cbEnableReminder.Location = new Point(24, 47);
             cbEnableReminder.Name = "cbEnableReminder";
-            cbEnableReminder.Size = new Size(81, 17);
+            cbEnableReminder.Size = new Size(105, 17);
             cbEnableReminder.TabIndex = 0;
-            cbEnableReminder.Text = "Reminders";
+            cbEnableReminder.Text = "Hatırlatıcı Uyarı";
             cbEnableReminder.UseVisualStyleBackColor = true;
             cbEnableReminder.CheckedChanged += cbEnableReminder_CheckedChanged;
             // 
@@ -56,7 +57,7 @@
             lblTransparency.AutoSize = true;
             lblTransparency.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 162);
             lblTransparency.ForeColor = Color.WhiteSmoke;
-            lblTransparency.Location = new Point(35, 107);
+            lblTransparency.Location = new Point(34, 107);
             lblTransparency.Name = "lblTransparency";
             lblTransparency.Size = new Size(70, 13);
             lblTransparency.TabIndex = 2;
@@ -104,34 +105,11 @@
             cbChangeCity.FlatStyle = FlatStyle.Flat;
             cbChangeCity.FormattingEnabled = true;
             cbChangeCity.Items.AddRange(new object[] { "Adana", "Adıyaman", "Afyonkarahisar", "Ağrı", "Aksaray", "Amasya", "Ankara", "Antalya", "Ardahan", "Artvin", "Aydın", "Balıkesir", "Bartın", "Batman", "Bayburt", "Bilecik", "Bingöl", "Bitlis", "Bolu", "Burdur", "Bursa", "Çanakkale", "Çankırı", "Çorum", "Denizli", "Diyarbakır", "Düzce", "Edirne", "Elazığ", "Erzincan", "Erzurum", "Eskişehir", "Gaziantep", "Giresun", "Gümüşhane", "Hakkâri", "Hatay", "Iğdır", "Isparta", "İstanbul", "İzmir", "Kahramanmaraş", "Karabük", "Karaman", "Kars", "Kastamonu", "Kayseri", "Kilis", "Kırıkkale", "Kırklareli", "Kırşehir", "Kocaeli", "Konya", "Kütahya", "Malatya", "Manisa", "Mardin", "Mersin", "Muğla", "Muş", "Nevşehir", "Niğde", "Ordu", "Osmaniye", "Rize", "Sakarya", "Samsun", "Şanlıurfa", "Siirt", "Sinop", "Sivas", "Şırnak", "Tekirdağ", "Tokat", "Trabzon", "Tunceli", "Uşak", "Van", "Yalova", "Yozgat", "Zonguldak" });
-            cbChangeCity.Location = new Point(49, 210);
+            cbChangeCity.Location = new Point(49, 251);
             cbChangeCity.Name = "cbChangeCity";
             cbChangeCity.Size = new Size(121, 23);
             cbChangeCity.TabIndex = 9;
             cbChangeCity.SelectedIndexChanged += cbChangeCity_SelectedIndexChanged;
-            // 
-            // lblEdgeMargin
-            // 
-            lblEdgeMargin.AutoSize = true;
-            lblEdgeMargin.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            lblEdgeMargin.ForeColor = Color.WhiteSmoke;
-            lblEdgeMargin.Location = new Point(24, 155);
-            lblEdgeMargin.Name = "lblEdgeMargin";
-            lblEdgeMargin.TabIndex = 12;
-            lblEdgeMargin.Text = "Köşe Boşluğu (px)";
-            // 
-            // cbEdgeMargin
-            // 
-            cbEdgeMargin.BackColor = Color.White;
-            cbEdgeMargin.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbEdgeMargin.FlatStyle = FlatStyle.Flat;
-            cbEdgeMargin.FormattingEnabled = true;
-            cbEdgeMargin.Items.AddRange(new object[] { "5", "10", "15", "20", "25", "30", "35", "40" });
-            cbEdgeMargin.Location = new Point(49, 170);
-            cbEdgeMargin.Name = "cbEdgeMargin";
-            cbEdgeMargin.Size = new Size(60, 23);
-            cbEdgeMargin.TabIndex = 13;
-            cbEdgeMargin.SelectedIndexChanged += cbEdgeMargin_SelectedIndexChanged;
             // 
             // cbRunOnStartup
             // 
@@ -140,9 +118,9 @@
             cbRunOnStartup.ForeColor = Color.WhiteSmoke;
             cbRunOnStartup.Location = new Point(24, 70);
             cbRunOnStartup.Name = "cbRunOnStartup";
-            cbRunOnStartup.Size = new Size(105, 17);
+            cbRunOnStartup.Size = new Size(123, 17);
             cbRunOnStartup.TabIndex = 10;
-            cbRunOnStartup.Text = "Run on Startup";
+            cbRunOnStartup.Text = "Başlangıçta Çalıştır";
             cbRunOnStartup.UseVisualStyleBackColor = true;
             cbRunOnStartup.CheckedChanged += cbRunStartup_CheckedChanged;
             // 
@@ -153,17 +131,53 @@
             label1.ForeColor = Color.White;
             label1.Location = new Point(5, 6);
             label1.Name = "label1";
-            label1.Size = new Size(50, 15);
+            label1.Size = new Size(44, 15);
             label1.TabIndex = 11;
-            label1.Text = "Settings";
+            label1.Text = "Ayarlar";
             label1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // lblEdgeMargin
+            // 
+            lblEdgeMargin.AutoSize = true;
+            lblEdgeMargin.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            lblEdgeMargin.ForeColor = Color.WhiteSmoke;
+            lblEdgeMargin.Location = new Point(64, 171);
+            lblEdgeMargin.Name = "lblEdgeMargin";
+            lblEdgeMargin.Size = new Size(91, 13);
+            lblEdgeMargin.TabIndex = 12;
+            lblEdgeMargin.Text = "Kenar Boşlukları";
+            // 
+            // cbEdgeMargin
+            // 
+            cbEdgeMargin.BackColor = Color.White;
+            cbEdgeMargin.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbEdgeMargin.FlatStyle = FlatStyle.Flat;
+            cbEdgeMargin.FormattingEnabled = true;
+            cbEdgeMargin.Items.AddRange(new object[] { "5", "10", "15", "20", "25", "30", "35", "40" });
+            cbEdgeMargin.Location = new Point(70, 191);
+            cbEdgeMargin.Name = "cbEdgeMargin";
+            cbEdgeMargin.Size = new Size(78, 23);
+            cbEdgeMargin.TabIndex = 13;
+            cbEdgeMargin.SelectedIndexChanged += cbEdgeMargin_SelectedIndexChanged;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            label2.ForeColor = Color.WhiteSmoke;
+            label2.Location = new Point(86, 231);
+            label2.Name = "label2";
+            label2.Size = new Size(46, 13);
+            label2.TabIndex = 14;
+            label2.Text = "Şehirler";
             // 
             // FormSettings
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
-            ClientSize = new Size(219, 250);
+            ClientSize = new Size(219, 297);
+            Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(cbRunOnStartup);
             Controls.Add(cbEdgeMargin);
@@ -200,5 +214,6 @@
         private Label label1;
         private Label lblEdgeMargin;
         private ComboBox cbEdgeMargin;
+        private Label label2;
     }
 }
