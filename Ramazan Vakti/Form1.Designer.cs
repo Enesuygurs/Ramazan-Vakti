@@ -26,7 +26,8 @@
         ///  Required method for Designer support - do not modify
         ///  the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent() {
+        private void InitializeComponent()
+        {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             lblTime1 = new Label();
@@ -145,9 +146,9 @@
             // 
             lblKalanZaman.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
             lblKalanZaman.ForeColor = Color.WhiteSmoke;
-            lblKalanZaman.Location = new Point(31, 84);
+            lblKalanZaman.Location = new Point(31, 86);
             lblKalanZaman.Name = "lblKalanZaman";
-            lblKalanZaman.Size = new Size(158, 52);
+            lblKalanZaman.Size = new Size(158, 40);
             lblKalanZaman.TabIndex = 8;
             lblKalanZaman.Text = "Kalan Süre\r\n08:02:25";
             lblKalanZaman.TextAlign = ContentAlignment.MiddleCenter;
@@ -194,9 +195,9 @@
             // 
             lblRamadanDay.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold);
             lblRamadanDay.ForeColor = Color.WhiteSmoke;
-            lblRamadanDay.Location = new Point(50, 30);
+            lblRamadanDay.Location = new Point(50, 52);
             lblRamadanDay.Name = "lblRamadanDay";
-            lblRamadanDay.Size = new Size(120, 32);
+            lblRamadanDay.Size = new Size(120, 30);
             lblRamadanDay.TabIndex = 10;
             lblRamadanDay.Text = "1. Gün";
             lblRamadanDay.TextAlign = ContentAlignment.MiddleCenter;
@@ -205,9 +206,9 @@
             // 
             lblCity.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
             lblCity.ForeColor = Color.OrangeRed;
-            lblCity.Location = new Point(50, 62);
+            lblCity.Location = new Point(50, 30);
             lblCity.Name = "lblCity";
-            lblCity.Size = new Size(120, 22);
+            lblCity.Size = new Size(120, 20);
             lblCity.TabIndex = 11;
             lblCity.Text = "İstanbul";
             lblCity.TextAlign = ContentAlignment.MiddleCenter;
