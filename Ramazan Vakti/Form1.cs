@@ -16,10 +16,7 @@ namespace Ramazan_Vakti {
         private System.Windows.Forms.Timer? _retryTimer;
         private bool _retryScheduled = false;
         private bool _loaded = false;
-        private int _lastSnapX = int.MinValue;
-        private int _lastSnapY = int.MinValue;
-        private bool _dragging = false;
-        private Point _dragOffset;
+        private WidgetHelper? _widgetHelper;
         #endregion
 
         #region Components
@@ -32,41 +29,12 @@ namespace Ramazan_Vakti {
 
         [DllImport("user32.dll", SetLastError = true)]
         private static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, uint uFlags);
-        [DllImport("user32.dll")]
-        private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        [DllImport("user32.dll")]
-        private static extern bool ReleaseCapture();
-
-        private const int WM_NCLBUTTONDOWN = 0xA1;
-        private const int HTCAPTION = 0x2;
-        private const int WM_NCHITTEST = 0x84;
-        private const int RESIZE_BORDER = 8;
-        private const int SNAP_THRESHOLD = 10;
-        private const int SNAP_GAP = 5;
-        private const int GWL_STYLE = -16;
-        private const uint WS_CAPTION = 0x00C00000;
-        private const uint WS_CHILD = 0x40000000;
-
-        [DllImport("user32.dll")]
-        private static extern bool EnumWindows(EnumWindowsProc lpEnumFunc, IntPtr lParam);
-        private delegate bool EnumWindowsProc(IntPtr hWnd, IntPtr lParam);
-
-        [DllImport("user32.dll")]
-        private static extern bool GetWindowRect(IntPtr hWnd, out REKT lpRect);
-        [DllImport("user32.dll")]
-        private static extern bool IsWindowVisible(IntPtr hWnd);
-        [DllImport("user32.dll")]
-        private static extern int GetWindowLong(IntPtr hWnd, int nIndex);
-
-        [StructLayout(LayoutKind.Sequential)]
-        private struct REKT {
-            public int Left, Top, Right, Bottom;
-        }
         #endregion
 
         public Form1() {
             InitializeComponent();
             SetWindowPos(this.Handle, (IntPtr)HWND_BOTTOM, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE | SWP_NOACTIVATE | SWP_SHOWWINDOW);
+            _widgetHelper = new WidgetHelper(this);
             lblKalanZaman.Visible = false;
         }
 
@@ -240,33 +208,6 @@ namespace Ramazan_Vakti {
         private void btnClose_Click(object sender, EventArgs e) => Application.Exit();
         private void exitToolStripMenuItem_Click(object sender, EventArgs e) => Application.Exit();
         #endregion
-        
-        #region Movable Form
-        private void Form1_MouseDown(object sender, MouseEventArgs e) {
-            if (e.Button == MouseButtons.Left) {
-                _dragging = true;
-                _dragOffset = e.Location;
-                _lastSnapX = int.MinValue;
-                _lastSnapY = int.MinValue;
-            }
-        }
-
-        private void Form1_MouseMove(object sender, MouseEventArgs e) {
-            if (_dragging && e.Button == MouseButtons.Left) {
-                Point cursorScreen = Cursor.Position;
-                int newX = cursorScreen.X - _dragOffset.X;
-                int newY = cursorScreen.Y - _dragOffset.Y;
-                var snapped = ApplySnap(newX, newY);
-                this.Location = new Point(snapped.X, snapped.Y);
-            }
-        }
-
-        private void Form1_MouseUp(object sender, MouseEventArgs e) {
-            if (e.Button == MouseButtons.Left) {
-                _dragging = false;
-            }
-        }
-        #endregion
 
         #region Change Widget Size
         private void lblChangeSize_Click(object sender, EventArgs e) {
@@ -320,17 +261,8 @@ namespace Ramazan_Vakti {
         }
 
         protected override void WndProc(ref Message m) {
-            if (m.Msg == WM_NCHITTEST) {
-                Point cursor = PointToClient(Cursor.Position);
-                int w = Width, h = Height;
-
-                if (cursor.X < RESIZE_BORDER) m.Result = (IntPtr)(cursor.Y < RESIZE_BORDER ? 13 : (cursor.Y > h - RESIZE_BORDER ? 16 : 10)); 
-                else if (cursor.X > w - RESIZE_BORDER) m.Result = (IntPtr)(cursor.Y < RESIZE_BORDER ? 14 : (cursor.Y > h - RESIZE_BORDER ? 17 : 11));
-                else if (cursor.Y < RESIZE_BORDER) m.Result = (IntPtr)12;
-                else if (cursor.Y > h - RESIZE_BORDER) m.Result = (IntPtr)15;
-                else base.WndProc(ref m);
+            if (_widgetHelper != null && _widgetHelper.HandleWndProc(ref m))
                 return;
-            }
             base.WndProc(ref m);
         }
 
@@ -353,111 +285,6 @@ namespace Ramazan_Vakti {
 
             // Kalan zaman label'ı biraz daha büyük başlasın
             lblKalanZaman.Font = new Font("Segoe UI Semibold", Math.Min(baseFontSize * scaleFactor, maxFontSize), FontStyle.Bold);
-        }
-        #endregion
-
-        #region Snap to Widgets
-        private Point ApplySnap(int newX, int newY) {
-            int w = this.Width;
-            int h = this.Height;
-
-            bool skipSnapX = _lastSnapX != int.MinValue && Math.Abs(newX - _lastSnapX) > SNAP_THRESHOLD;
-            bool skipSnapY = _lastSnapY != int.MinValue && Math.Abs(newY - _lastSnapY) > SNAP_THRESHOLD;
-
-            if (skipSnapX) _lastSnapX = int.MinValue;
-            if (skipSnapY) _lastSnapY = int.MinValue;
-
-            var others = GetOtherWidgetWindows();
-
-            bool snappedX = false, snappedY = false;
-            int bestDx = int.MaxValue, bestDy = int.MaxValue;
-            int snapX = newX, snapY = newY;
-            REKT? snapSourceX = null, snapSourceY = null;
-
-            int rLeft = newX, rTop = newY, rRight = newX + w, rBottom = newY + h;
-
-            if (!skipSnapX || !skipSnapY) {
-                foreach (var other in others) {
-                    bool vertOverlap = rTop < other.Bottom && rBottom > other.Top;
-                    bool horizOverlap = rLeft < other.Right && rRight > other.Left;
-
-                    if (!skipSnapX && vertOverlap) {
-                        int d = Math.Abs(rRight - (other.Left - SNAP_GAP));
-                        if (d < SNAP_THRESHOLD && d < bestDx) { snapX = other.Left - SNAP_GAP - w; bestDx = d; snappedX = true; snapSourceX = other; }
-                        d = Math.Abs(rLeft - (other.Right + SNAP_GAP));
-                        if (d < SNAP_THRESHOLD && d < bestDx) { snapX = other.Right + SNAP_GAP; bestDx = d; snappedX = true; snapSourceX = other; }
-                    }
-
-                    if (!skipSnapY && horizOverlap) {
-                        int d = Math.Abs(rBottom - (other.Top - SNAP_GAP));
-                        if (d < SNAP_THRESHOLD && d < bestDy) { snapY = other.Top - SNAP_GAP - h; bestDy = d; snappedY = true; snapSourceY = other; }
-                        d = Math.Abs(rTop - (other.Bottom + SNAP_GAP));
-                        if (d < SNAP_THRESHOLD && d < bestDy) { snapY = other.Bottom + SNAP_GAP; bestDy = d; snappedY = true; snapSourceY = other; }
-                    }
-                }
-
-                foreach (var screen in Screen.AllScreens) {
-                    var wa = screen.WorkingArea;
-                    if (!skipSnapX) {
-                        int d = Math.Abs(rLeft - wa.Left);
-                        if (d < SNAP_THRESHOLD && d < bestDx) { snapX = wa.Left; bestDx = d; snappedX = true; snapSourceX = null; }
-                        d = Math.Abs(rRight - wa.Right);
-                        if (d < SNAP_THRESHOLD && d < bestDx) { snapX = wa.Right - w; bestDx = d; snappedX = true; snapSourceX = null; }
-                    }
-                    if (!skipSnapY) {
-                        int d = Math.Abs(rTop - wa.Top);
-                        if (d < SNAP_THRESHOLD && d < bestDy) { snapY = wa.Top; bestDy = d; snappedY = true; snapSourceY = null; }
-                        d = Math.Abs(rBottom - wa.Bottom);
-                        if (d < SNAP_THRESHOLD && d < bestDy) { snapY = wa.Bottom - h; bestDy = d; snappedY = true; snapSourceY = null; }
-                    }
-                }
-            }
-
-            if (snappedX && snapSourceX.HasValue) {
-                var o = snapSourceX.Value;
-                int dTop = Math.Abs(rTop - o.Top);
-                int dBot = Math.Abs(rBottom - o.Bottom);
-                if (dTop < SNAP_THRESHOLD) { snapY = o.Top; snappedY = true; }
-                else if (dBot < SNAP_THRESHOLD) { snapY = o.Bottom - h; snappedY = true; }
-            }
-            if (snappedY && snapSourceY.HasValue) {
-                var o = snapSourceY.Value;
-                int dLeft = Math.Abs(rLeft - o.Left);
-                int dRight = Math.Abs(rRight - o.Right);
-                if (dLeft < SNAP_THRESHOLD) { snapX = o.Left; snappedX = true; }
-                else if (dRight < SNAP_THRESHOLD) { snapX = o.Right - w; snappedX = true; }
-            }
-
-            if (snappedX) _lastSnapX = snapX; else _lastSnapX = int.MinValue;
-            if (snappedY) _lastSnapY = snapY; else _lastSnapY = int.MinValue;
-
-            return new Point(snappedX ? snapX : newX, snappedY ? snapY : newY);
-        }
-
-        private List<REKT> GetOtherWidgetWindows() {
-            var windows = new List<REKT>();
-            IntPtr thisHandle = this.Handle;
-
-            EnumWindows((hWnd, lParam) => {
-                if (hWnd == thisHandle) return true;
-                if (!IsWindowVisible(hWnd)) return true;
-
-                int style = GetWindowLong(hWnd, GWL_STYLE);
-                if ((style & (int)WS_CHILD) != 0) return true;
-                if ((style & (int)WS_CAPTION) != 0) return true;
-
-                GetWindowRect(hWnd, out REKT r);
-                int rw = r.Right - r.Left;
-                int rh = r.Bottom - r.Top;
-
-                if (rw >= 50 && rw <= 500 && rh >= 50 && rh <= 500) {
-                    windows.Add(r);
-                }
-
-                return true;
-            }, IntPtr.Zero);
-
-            return windows;
         }
         #endregion
     }
