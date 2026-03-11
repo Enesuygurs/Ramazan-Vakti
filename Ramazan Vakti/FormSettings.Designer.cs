@@ -89,7 +89,7 @@
             btnClose.AutoSize = true;
             btnClose.Font = new Font("Webdings", 11.25F, FontStyle.Bold);
             btnClose.ForeColor = Color.WhiteSmoke;
-            btnClose.Location = new Point(193, 3);
+            btnClose.Location = new Point(194, 3);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(25, 20);
             btnClose.TabIndex = 8;
@@ -150,7 +150,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
-            ClientSize = new Size(219, 250);
+            ClientSize = new Size(220, 250);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(cbRunOnStartup);
