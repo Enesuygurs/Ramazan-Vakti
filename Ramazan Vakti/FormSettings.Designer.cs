@@ -42,7 +42,7 @@
             cbEnableReminder.AutoSize = true;
             cbEnableReminder.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 162);
             cbEnableReminder.ForeColor = Color.WhiteSmoke;
-            cbEnableReminder.Location = new Point(24, 47);
+            cbEnableReminder.Location = new Point(24, 40);
             cbEnableReminder.Name = "cbEnableReminder";
             cbEnableReminder.Size = new Size(105, 17);
             cbEnableReminder.TabIndex = 0;
@@ -55,7 +55,7 @@
             lblTransparency.AutoSize = true;
             lblTransparency.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 162);
             lblTransparency.ForeColor = Color.WhiteSmoke;
-            lblTransparency.Location = new Point(34, 107);
+            lblTransparency.Location = new Point(34, 97);
             lblTransparency.Name = "lblTransparency";
             lblTransparency.Size = new Size(70, 13);
             lblTransparency.TabIndex = 2;
@@ -63,7 +63,7 @@
             // 
             // tbTransparency
             // 
-            tbTransparency.Location = new Point(34, 123);
+            tbTransparency.Location = new Point(34, 113);
             tbTransparency.Maximum = 100;
             tbTransparency.Minimum = 50;
             tbTransparency.Name = "tbTransparency";
@@ -78,7 +78,7 @@
             lblTransparencyValue.AutoSize = true;
             lblTransparencyValue.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 162);
             lblTransparencyValue.ForeColor = Color.WhiteSmoke;
-            lblTransparencyValue.Location = new Point(155, 107);
+            lblTransparencyValue.Location = new Point(155, 97);
             lblTransparencyValue.Name = "lblTransparencyValue";
             lblTransparencyValue.Size = new Size(29, 13);
             lblTransparencyValue.TabIndex = 4;
@@ -103,7 +103,7 @@
             cbChangeCity.FlatStyle = FlatStyle.Flat;
             cbChangeCity.FormattingEnabled = true;
             cbChangeCity.Items.AddRange(new object[] { "Adana", "Adıyaman", "Afyonkarahisar", "Ağrı", "Aksaray", "Amasya", "Ankara", "Antalya", "Ardahan", "Artvin", "Aydın", "Balıkesir", "Bartın", "Batman", "Bayburt", "Bilecik", "Bingöl", "Bitlis", "Bolu", "Burdur", "Bursa", "Çanakkale", "Çankırı", "Çorum", "Denizli", "Diyarbakır", "Düzce", "Edirne", "Elazığ", "Erzincan", "Erzurum", "Eskişehir", "Gaziantep", "Giresun", "Gümüşhane", "Hakkâri", "Hatay", "Iğdır", "Isparta", "İstanbul", "İzmir", "Kahramanmaraş", "Karabük", "Karaman", "Kars", "Kastamonu", "Kayseri", "Kilis", "Kırıkkale", "Kırklareli", "Kırşehir", "Kocaeli", "Konya", "Kütahya", "Malatya", "Manisa", "Mardin", "Mersin", "Muğla", "Muş", "Nevşehir", "Niğde", "Ordu", "Osmaniye", "Rize", "Sakarya", "Samsun", "Şanlıurfa", "Siirt", "Sinop", "Sivas", "Şırnak", "Tekirdağ", "Tokat", "Trabzon", "Tunceli", "Uşak", "Van", "Yalova", "Yozgat", "Zonguldak" });
-            cbChangeCity.Location = new Point(49, 210);
+            cbChangeCity.Location = new Point(50, 180);
             cbChangeCity.Name = "cbChangeCity";
             cbChangeCity.Size = new Size(121, 23);
             cbChangeCity.TabIndex = 9;
@@ -114,7 +114,7 @@
             cbRunOnStartup.AutoSize = true;
             cbRunOnStartup.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 162);
             cbRunOnStartup.ForeColor = Color.WhiteSmoke;
-            cbRunOnStartup.Location = new Point(24, 70);
+            cbRunOnStartup.Location = new Point(24, 63);
             cbRunOnStartup.Name = "cbRunOnStartup";
             cbRunOnStartup.Size = new Size(123, 17);
             cbRunOnStartup.TabIndex = 10;
@@ -139,7 +139,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 162);
             label2.ForeColor = Color.WhiteSmoke;
-            label2.Location = new Point(86, 190);
+            label2.Location = new Point(87, 161);
             label2.Name = "label2";
             label2.Size = new Size(46, 13);
             label2.TabIndex = 14;
@@ -150,7 +150,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
-            ClientSize = new Size(220, 250);
+            ClientSize = new Size(220, 220);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(cbRunOnStartup);
