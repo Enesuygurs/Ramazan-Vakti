@@ -296,9 +296,8 @@ namespace Ramazan_Vakti {
             if (savedX >= 0 && savedY >= 0 && IsPositionOnScreen(savedX, savedY)) {
                 this.Location = new Point(savedX, savedY);
             } else {
-                int margin = Properties.Settings.Default.EdgeMargin;
-                int pointX = (Screen.PrimaryScreen != null) ? Screen.PrimaryScreen.Bounds.Width - this.Width - margin : 100;
-                int pointY = margin;
+                int pointX = (Screen.PrimaryScreen != null) ? Screen.PrimaryScreen.Bounds.Width - this.Width - 10 : 100;
+                int pointY = 10;
                 this.Location = new Point(pointX, pointY);
             }
         }

@@ -33,8 +33,6 @@
             cbChangeCity = new ComboBox();
             cbRunOnStartup = new CheckBox();
             label1 = new Label();
-            lblEdgeMargin = new Label();
-            cbEdgeMargin = new ComboBox();
             label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)tbTransparency).BeginInit();
             SuspendLayout();
@@ -105,7 +103,7 @@
             cbChangeCity.FlatStyle = FlatStyle.Flat;
             cbChangeCity.FormattingEnabled = true;
             cbChangeCity.Items.AddRange(new object[] { "Adana", "Adıyaman", "Afyonkarahisar", "Ağrı", "Aksaray", "Amasya", "Ankara", "Antalya", "Ardahan", "Artvin", "Aydın", "Balıkesir", "Bartın", "Batman", "Bayburt", "Bilecik", "Bingöl", "Bitlis", "Bolu", "Burdur", "Bursa", "Çanakkale", "Çankırı", "Çorum", "Denizli", "Diyarbakır", "Düzce", "Edirne", "Elazığ", "Erzincan", "Erzurum", "Eskişehir", "Gaziantep", "Giresun", "Gümüşhane", "Hakkâri", "Hatay", "Iğdır", "Isparta", "İstanbul", "İzmir", "Kahramanmaraş", "Karabük", "Karaman", "Kars", "Kastamonu", "Kayseri", "Kilis", "Kırıkkale", "Kırklareli", "Kırşehir", "Kocaeli", "Konya", "Kütahya", "Malatya", "Manisa", "Mardin", "Mersin", "Muğla", "Muş", "Nevşehir", "Niğde", "Ordu", "Osmaniye", "Rize", "Sakarya", "Samsun", "Şanlıurfa", "Siirt", "Sinop", "Sivas", "Şırnak", "Tekirdağ", "Tokat", "Trabzon", "Tunceli", "Uşak", "Van", "Yalova", "Yozgat", "Zonguldak" });
-            cbChangeCity.Location = new Point(49, 251);
+            cbChangeCity.Location = new Point(49, 210);
             cbChangeCity.Name = "cbChangeCity";
             cbChangeCity.Size = new Size(121, 23);
             cbChangeCity.TabIndex = 9;
@@ -136,36 +134,12 @@
             label1.Text = "Ayarlar";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // lblEdgeMargin
-            // 
-            lblEdgeMargin.AutoSize = true;
-            lblEdgeMargin.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            lblEdgeMargin.ForeColor = Color.WhiteSmoke;
-            lblEdgeMargin.Location = new Point(64, 171);
-            lblEdgeMargin.Name = "lblEdgeMargin";
-            lblEdgeMargin.Size = new Size(91, 13);
-            lblEdgeMargin.TabIndex = 12;
-            lblEdgeMargin.Text = "Kenar Boşlukları";
-            // 
-            // cbEdgeMargin
-            // 
-            cbEdgeMargin.BackColor = Color.White;
-            cbEdgeMargin.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbEdgeMargin.FlatStyle = FlatStyle.Flat;
-            cbEdgeMargin.FormattingEnabled = true;
-            cbEdgeMargin.Items.AddRange(new object[] { "5", "10", "15", "20", "25", "30", "35", "40" });
-            cbEdgeMargin.Location = new Point(70, 191);
-            cbEdgeMargin.Name = "cbEdgeMargin";
-            cbEdgeMargin.Size = new Size(78, 23);
-            cbEdgeMargin.TabIndex = 13;
-            cbEdgeMargin.SelectedIndexChanged += cbEdgeMargin_SelectedIndexChanged;
-            // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 162);
             label2.ForeColor = Color.WhiteSmoke;
-            label2.Location = new Point(86, 231);
+            label2.Location = new Point(86, 190);
             label2.Name = "label2";
             label2.Size = new Size(46, 13);
             label2.TabIndex = 14;
@@ -176,12 +150,10 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
-            ClientSize = new Size(219, 297);
+            ClientSize = new Size(219, 250);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(cbRunOnStartup);
-            Controls.Add(cbEdgeMargin);
-            Controls.Add(lblEdgeMargin);
             Controls.Add(cbChangeCity);
             Controls.Add(lblTransparencyValue);
             Controls.Add(tbTransparency);
@@ -212,8 +184,6 @@
         private ComboBox cbChangeCity;
         private CheckBox cbRunOnStartup;
         private Label label1;
-        private Label lblEdgeMargin;
-        private ComboBox cbEdgeMargin;
         private Label label2;
     }
 }

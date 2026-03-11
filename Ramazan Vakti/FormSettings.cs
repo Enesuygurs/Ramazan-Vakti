@@ -23,8 +23,6 @@ namespace Ramazan_Vakti
                 Properties.Settings.Default.Save();
             }
             cbChangeCity.SelectedItem = Properties.Settings.Default.SelectedCity ?? "İstanbul";
-            cbEdgeMargin.SelectedItem = Properties.Settings.Default.EdgeMargin.ToString();
-            if (cbEdgeMargin.SelectedIndex < 0) cbEdgeMargin.SelectedItem = "10";
             _isInitializing = true; // 🔥 Event'leri tekrar aktif et
         }
 
@@ -81,19 +79,6 @@ namespace Ramazan_Vakti
         private void cbChangeCity_SelectedIndexChanged(object sender, EventArgs e) {
             if (!_isInitializing) return;
             ChangeCityAsync();
-        }
-        private void cbEdgeMargin_SelectedIndexChanged(object sender, EventArgs e) {
-            if (!_isInitializing) return;
-            if (int.TryParse(cbEdgeMargin.SelectedItem?.ToString(), out int margin)) {
-                Properties.Settings.Default.EdgeMargin = margin;
-                Properties.Settings.Default.Save();
-
-                // Apply immediately to main form if it's open
-                try {
-                    var main = Application.OpenForms.OfType<Form1>().FirstOrDefault();
-                    main?.SetFormPosition();
-                } catch { }
-            }
         }
         #endregion
 

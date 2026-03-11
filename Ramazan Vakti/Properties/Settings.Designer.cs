@@ -73,18 +73,6 @@ namespace Ramazan_Vakti.Properties {
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10")]
-        public int EdgeMargin {
-            get {
-                return ((int)(this["EdgeMargin"]));
-            }
-            set {
-                this["EdgeMargin"] = value;
-            }
-        }
-
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("-1")]
         public int LastX {
             get {
