@@ -252,6 +252,8 @@
             Load += Form1_Load;
             MouseDown += Form1_MouseDown;
             MouseMove += Form1_MouseMove;
+            MouseUp += Form1_MouseUp;
+            LocationChanged += Form1_LocationChanged;
             Resize += Form1_Resize;
             taskbarMenu.ResumeLayout(false);
             pnlButtons.ResumeLayout(false);

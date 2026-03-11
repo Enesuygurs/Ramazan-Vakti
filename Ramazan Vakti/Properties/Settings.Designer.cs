@@ -82,5 +82,29 @@ namespace Ramazan_Vakti.Properties {
                 this["EdgeMargin"] = value;
             }
         }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-1")]
+        public int LastX {
+            get {
+                return ((int)(this["LastX"]));
+            }
+            set {
+                this["LastX"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-1")]
+        public int LastY {
+            get {
+                return ((int)(this["LastY"]));
+            }
+            set {
+                this["LastY"] = value;
+            }
+        }
     }
 }

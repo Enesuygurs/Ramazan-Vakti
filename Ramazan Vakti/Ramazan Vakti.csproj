@@ -16,6 +16,7 @@
   <ItemGroup>
     <Compile Remove="SettingsForm.cs" />
     <Compile Remove="SettingsForm.Designer.cs" />
+    <Compile Remove="Yapıştırmalı Form.cs" />
   </ItemGroup>
 
   <ItemGroup>
