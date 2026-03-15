@@ -8,6 +8,11 @@ namespace Ramazan_Vakti {
         private int _lastSnapX = int.MinValue;
         private int _lastSnapY = int.MinValue;
 
+        // When true, suppress the OS resize cursor by returning HTCLIENT
+        // for hit-test results that would normally show the resize cursor.
+        // Default true to keep widget-like behavior.
+        public bool SuppressResizeCursor { get; set; } = true;
+
         private const int SNAP_THRESHOLD = 10;
         private const int SNAP_GAP = 5;
         private const int WM_NCHITTEST = 0x84;
@@ -180,16 +185,24 @@ namespace Ramazan_Vakti {
                 Point cursor = _form.PointToClient(Cursor.Position);
                 int w = _form.Width, h = _form.Height;
 
+                int res;
                 if (cursor.X < RESIZE_BORDER)
-                    m.Result = (IntPtr)(cursor.Y < RESIZE_BORDER ? 13 : (cursor.Y > h - RESIZE_BORDER ? 16 : 10));
+                    res = (cursor.Y < RESIZE_BORDER ? 13 : (cursor.Y > h - RESIZE_BORDER ? 16 : 10));
                 else if (cursor.X > w - RESIZE_BORDER)
-                    m.Result = (IntPtr)(cursor.Y < RESIZE_BORDER ? 14 : (cursor.Y > h - RESIZE_BORDER ? 17 : 11));
+                    res = (cursor.Y < RESIZE_BORDER ? 14 : (cursor.Y > h - RESIZE_BORDER ? 17 : 11));
                 else if (cursor.Y < RESIZE_BORDER)
-                    m.Result = (IntPtr)12;
+                    res = 12;
                 else if (cursor.Y > h - RESIZE_BORDER)
-                    m.Result = (IntPtr)15;
+                    res = 15;
                 else
                     return false;
+
+                if (SuppressResizeCursor) {
+                    // HTCLIENT == 1
+                    m.Result = (IntPtr)1;
+                } else {
+                    m.Result = (IntPtr)res;
+                }
                 return true;
             }
             return false;
