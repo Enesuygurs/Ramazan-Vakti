@@ -243,8 +243,8 @@
             Controls.Add(pnlButtons);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            MaximumSize = new Size(225, 320);
-            MinimumSize = new Size(220, 310);
+            MaximumSize = new Size(220, 310);
+            MinimumSize = new Size(220, 140);
             Name = "Form1";
             Opacity = 0.8D;
             ShowInTaskbar = false;

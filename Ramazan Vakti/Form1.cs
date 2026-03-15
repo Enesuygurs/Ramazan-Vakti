@@ -212,13 +212,10 @@ namespace Ramazan_Vakti {
         #region Change Widget Size
         private void lblChangeSize_Click(object sender, EventArgs e) {
             if (Height >= OriginalHeight) {
-                MaximumSize = new Size(220, 140);
                 Size = new Size(220, 140);
                 lblChangeSize.Text = "⏷";
                 Properties.Settings.Default.IsCompact = true;
             } else {
-                MinimumSize = new Size(220, 310);
-                MaximumSize = new Size(225, 320);
                 Size = new Size(220, 310);
                 lblChangeSize.Text = "⏶";
                 Properties.Settings.Default.IsCompact = false;
