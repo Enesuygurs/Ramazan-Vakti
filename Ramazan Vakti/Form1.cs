@@ -46,7 +46,7 @@ namespace Ramazan_Vakti {
 
             // Restore compact/expanded state
             if (Properties.Settings.Default.IsCompact) {
-                MaximumSize = new Size(220, 140);
+                MaximumSize = new Size(220, 310);
                 Size = new Size(220, 140);
                 lblChangeSize.Text = "⏷";
             }
