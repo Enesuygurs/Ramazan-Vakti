@@ -11,6 +11,7 @@ namespace Ramazan_Vakti
             InitializeComponent();
         }
         private void FormSettings_Load(object sender, EventArgs e) {
+            _isInitializing = true; // Başlangıç: eventleri devre dışı bırak
             cbEnableReminder.Checked = Properties.Settings.Default.reminder;
             int pct = Properties.Settings.Default.TransparencyPercent;
             pct = Math.Clamp(pct, 50, 100);
@@ -23,7 +24,7 @@ namespace Ramazan_Vakti
                 Properties.Settings.Default.Save();
             }
             cbChangeCity.SelectedItem = Properties.Settings.Default.SelectedCity ?? "İstanbul";
-            _isInitializing = true; // 🔥 Event'leri tekrar aktif et
+            _isInitializing = false; // Başlangıç tamam: eventleri artık kabul et
         }
 
         #region Settings Controls
@@ -76,8 +77,8 @@ namespace Ramazan_Vakti
             }
         }
 
-        private void cbChangeCity_SelectedIndexChanged(object sender, EventArgs e) {
-            if (!_isInitializing) return;
+        private void cbChangeCity_DropDownClosed(object sender, EventArgs e) {
+            if (_isInitializing) return;
             ChangeCityAsync();
         }
         #endregion

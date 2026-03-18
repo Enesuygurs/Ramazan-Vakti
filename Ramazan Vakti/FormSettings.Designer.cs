@@ -107,7 +107,7 @@
             cbChangeCity.Name = "cbChangeCity";
             cbChangeCity.Size = new Size(121, 23);
             cbChangeCity.TabIndex = 9;
-            cbChangeCity.SelectedIndexChanged += cbChangeCity_SelectedIndexChanged;
+            cbChangeCity.DropDownClosed += cbChangeCity_DropDownClosed;
             // 
             // cbRunOnStartup
             // 
